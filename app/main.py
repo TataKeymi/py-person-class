@@ -12,7 +12,7 @@ def create_person_list(people: list) -> list:
     result = [Person(person["name"], person["age"]) for person in people]
     for person in people:
         for key in ("wife", "husband"):
-            if key in person and person[key] is not None:
+            if person.get(key) is not None:
                 setattr(Person.people[person["name"]],
                         key, Person.people[person[key]])
     return result
